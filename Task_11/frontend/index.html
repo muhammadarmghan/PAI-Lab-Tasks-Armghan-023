@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App - Check Current Weather</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background"></div>
+    
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🌤️ Weather App</h1>
+            <p class="subtitle">Get real-time weather information</p>
+        </header>
+        
+        <!-- Search Section -->
+        <div class="search-section">
+            <div class="search-box">
+                <input 
+                    type="text" 
+                    id="cityInput" 
+                    class="city-input" 
+                    placeholder="Enter city name..." 
+                    autocomplete="off"
+                >
+                <button id="searchBtn" class="search-btn">
+                    <span>Search</span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Loading Indicator -->
+        <div id="loading" class="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p>Fetching weather...</p>
+        </div>
+        
+        <!-- Error Message -->
+        <div id="error" class="error-message" style="display: none;">
+            <span class="error-icon">⚠️</span>
+            <div>
+                <h3 id="errorTitle">Error</h3>
+                <p id="errorText">Something went wrong</p>
+            </div>
+        </div>
+        
+        <!-- Weather Results -->
+        <div id="weatherResult" class="weather-result" style="display: none;">
+            <div class="weather-header">
+                <div class="weather-emoji" id="weatherEmoji">🌤️</div>
+                <div class="weather-main">
+                    <h2 id="cityName">City Name</h2>
+                    <p id="condition" class="condition">Clear</p>
+                </div>
+            </div>
+            
+            <div class="temperature-section">
+                <div class="temperature" id="temperature">20°C</div>
+            </div>
+            
+            <div class="weather-info">
+                <div class="info-item">
+                    <span class="info-icon">💧</span>
+                    <div class="info-content">
+                        <p class="info-label">Humidity</p>
+                        <p class="info-value" id="humidity">--</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">💨</span>
+                    <div class="info-content">
+                        <p class="info-label">Wind Speed</p>
+                        <p class="info-value" id="windSpeed">--</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Made with ❤️ | Weather Data from Open-Meteo API</p>
+        </footer>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
