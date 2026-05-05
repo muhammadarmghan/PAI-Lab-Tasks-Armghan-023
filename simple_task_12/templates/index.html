@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant QnA Bot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🍽️ Restaurant QnA Bot</h1>
+            <p class="subtitle">Powered by FAISS Vector Search & HuggingFace MiniLM</p>
+        </div>
+
+        <div class="search-box">
+            <input 
+                type="text" 
+                id="queryInput" 
+                placeholder="Ask anything about our restaurant..."
+                autocomplete="off"
+            >
+            <button id="searchBtn">Search</button>
+        </div>
+
+        <div id="loadingSpinner" class="spinner hidden">
+            <div class="spin"></div>
+            <p>Searching...</p>
+        </div>
+
+        <div id="resultsContainer" class="results-container"></div>
+
+        <div class="info-box">
+            <h3>💡 Example Queries</h3>
+            <ul>
+                <li>What are your opening hours?</li>
+                <li>Do you offer delivery?</li>
+                <li>What vegetarian options do you have?</li>
+                <li>How can I make a reservation?</li>
+                <li>Do you accommodate dietary restrictions?</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
