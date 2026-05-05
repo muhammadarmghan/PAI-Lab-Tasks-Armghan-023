@@ -1,0 +1,3 @@
+Natural Language Processing (NLP) is a field of computer science, artificial intelligence, and linguistics concerned with the interactions between computers and human (natural) languages. It involves enabling computers to understand and generate human language in a valuable way.
+
+This sample text is for the word frequency example. NLP tasks include tokenization, stemming, lemmatization, named entity recognition, and many more.

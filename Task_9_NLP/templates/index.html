@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Task 9 NLP - Word Frequency</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="page-shell">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Task 9 / NLP / Flask</p>
+        <h1>Word frequency analyzer</h1>
+        <p class="subhead">
+          Paste text, upload a .txt file, or use the bundled sample input to analyze the most frequent words.
+        </p>
+        <div class="hero-actions">
+          <a class="pill" href="#analysis">Open analyzer</a>
+          <a class="pill pill-ghost" href="/health" target="_blank" rel="noreferrer">Health check</a>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <div class="tag-row">
+          <span class="tag">Case-insensitive</span>
+          <span class="tag">Text input</span>
+          <span class="tag">File upload</span>
+          <span class="tag">JSON API</span>
+        </div>
+        <p>
+          This is a complete browser-based workflow: the frontend submits data to Flask, the backend processes the text, and the same results can also be consumed via `/api/analyze`.
+        </p>
+      </aside>
+    </section>
+
+    <section class="panel" id="analysis">
+      <form class="analysis-form" method="post" enctype="multipart/form-data">
+        <div class="form-grid">
+          <div class="field-stack">
+            <label for="text_input">Input text</label>
+            <textarea id="text_input" name="text_input" placeholder="Type or paste text here">{{ text_input }}</textarea>
+            <p class="help-text">If text is empty, the app falls back to the bundled sample input.</p>
+          </div>
+
+          <div class="field-stack controls">
+            <div>
+              <label for="input_file">Upload text file</label>
+              <input id="input_file" name="input_file" type="file" accept=".txt,text/plain">
+            </div>
+
+            <div>
+              <label for="top_n">Show top N words</label>
+              <input id="top_n" name="top_n" type="number" min="1" max="50" value="{{ top_n }}">
+            </div>
+
+            <button class="submit-btn" type="submit">Analyze text</button>
+
+            <div class="stats">
+              <span class="stat-chip">Characters: {{ text_length }}</span>
+              <span class="stat-chip">Tokens: {{ token_count }}</span>
+              <span class="stat-chip">Unique shown: {{ unique_count }}</span>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <div class="results-wrap">
+        <div class="results-header">
+          <h2>Results</h2>
+          <p>Top {{ top_n }} words from the current input.</p>
+        </div>
+
+        {% if result %}
+        <table class="results-table">
+          <thead>
+            <tr>
+              <th>Word</th>
+              <th>Count</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for word, count in result %}
+            <tr>
+              <td>{{ word }}</td>
+              <td>{{ count }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% else %}
+        <div class="empty-state">No words found. Add text and run analysis.</div>
+        {% endif %}
+      </div>
+    </section>
+  </main>
+</body>
+</html>
